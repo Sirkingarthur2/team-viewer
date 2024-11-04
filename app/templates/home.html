@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCCA Team Viewer</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>BCCA Team Viewer</h1>
+        <nav>
+            <ul>
+                {% if teams %}
+                    <h1>Leadership Teams</h1>
+                    <ul>
+                        {% for team in teams %}
+                            <li><a href="{{ team }}/">{{ team }}</a></li> 
+                        {% endfor %}
+                    </ul>
+                {% elif team %}
+                    <h1>{{ team.name }}</h1>
+                    <p>{{ team.description }}</p>
+                    <h2>Members:</h2>
+                    <ul>
+                        {% for member in team.members %}
+                            <li>{{ member }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Welcome to the BCCA Team Viewer</h2>
+            <p>Explore our various sections to find the resources you need.</p>
+        </section>
+    </main>
+</body>
+</html>
